@@ -1,0 +1,30 @@
+class Result {
+
+    /*
+     * Complete the 'matchingStrings' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts following parameters:
+     *  1. STRING_ARRAY strings
+     *  2. STRING_ARRAY queries
+     */
+
+    public static List<Integer> matchingStrings(List<String> strings, List<String> queries) {
+    // Write your code here
+    List<Integer> result = new ArrayList<Integer>();
+    for(String str1:queries){
+        int count = 0;
+        for(String str2:strings){
+            if(str1.equals(str2)){
+                count++;
+            }
+        }
+        result.add(count); 
+    }
+    return result;
+             
+       
+
+    }
+
+}

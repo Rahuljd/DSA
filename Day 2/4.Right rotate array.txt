@@ -1,0 +1,11 @@
+class Result{
+   public int[] leftRotation(int[] a,int d){
+   int n = a.length;
+   int[] rotarr = new int[n];
+      for(int oldindex = 0; oldindex < n; oldindex++){
+          int newindex = (oldindex + d) % n;
+          rotarr[newindex] = a[oldindex];
+      }
+   return rotarr;
+   }
+}

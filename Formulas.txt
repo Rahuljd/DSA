@@ -1,0 +1,3 @@
+Left rotate array: int newindex = (oldindex - d + n) % n;
+
+Right rotate:int newindex = (oldindex + d) % n;

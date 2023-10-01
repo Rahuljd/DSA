@@ -1,0 +1,15 @@
+ public static SinglyLinkedListNode reverse(SinglyLinkedListNode llist) {
+    // Write your code here
+   SinglyLinkedListNode t = llist;
+        Stack<Integer> x = new Stack<>();
+        while(t != null){
+            x.push(t.data);
+            t = t.next;
+        }
+        t = llist;
+        while(t != null){
+            t.data = x.pop();
+            t = t.next;
+        }
+        return llist;
+    }

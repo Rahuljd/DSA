@@ -1,0 +1,22 @@
+class Result {
+
+    /*
+     * Complete the 'reverseArray' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts INTEGER_ARRAY a as parameter.
+     */
+
+    public static List<Integer> reverseArray(List<Integer> a) {
+    // Write your code here
+     if(a.size() <= 1 || a == null)
+      return a;
+     
+     int value = a.remove(0);
+     reverseArray(a);
+     a.add(value);
+     
+     return a;
+    }
+
+}

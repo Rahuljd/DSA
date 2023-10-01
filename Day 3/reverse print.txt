@@ -1,0 +1,9 @@
+public static void  reversePrint(SinglyLinkedListNode llist) {
+    // Write your code here
+    if(llist == null)
+      return;
+   // Result result = new Result();
+     reversePrint(llist.next);
+    System.out.println(llist.data);
+
+    }
