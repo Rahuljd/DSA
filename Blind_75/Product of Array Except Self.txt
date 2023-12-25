@@ -1,0 +1,24 @@
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int[] prefixProduct = new int[nums.length];
+        //for leftmost element 
+        prefixProduct[0] = 1;
+
+        //calculatin prefixProduct
+        for(int i = 1; i < nums.length; i++) {
+            prefixProduct[i] = prefixProduct[i-1] * nums[i-1];
+        }
+
+        //for rightmost element
+        int suffixProduct = 1;
+
+        for(int i = nums.length -1; i >=0; i--) {
+            //final answer prefix * suffix
+            prefixProduct[i] = prefixProduct[i] * suffixProduct;
+            //calculating suffix on the go
+            suffixProduct = suffixProduct * nums[i];
+        }
+
+       return prefixProduct;
+    }
+}
