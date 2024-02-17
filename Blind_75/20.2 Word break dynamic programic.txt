@@ -1,0 +1,22 @@
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        
+      Set<String> wordSet = new HashSet<>(wordDict);
+      boolean[] dp =  new boolean[s.length() + 1];
+      dp[0] = true ; // empty string is valid segmentation
+
+      //iterate through each character
+      for(int end = 1; end <= s.length(); end++) {
+          //check prefix is part of dictionary
+          for(int start = 0; start < end; start++) {
+              //if the prefix is valid and remaining substring is in word set
+              if(dp[start] && wordSet.contains(s.substring(start, end))) {
+                  dp[end] = true;
+                  break;
+              }
+          }
+      }
+
+     return dp[s.length()];
+    }
+}

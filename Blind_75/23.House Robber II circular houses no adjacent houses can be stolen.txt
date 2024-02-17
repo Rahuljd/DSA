@@ -1,0 +1,28 @@
+class Solution {
+    public int rob(int[] nums) {
+       int n = nums.length;
+       if(n == 0) {
+           return 0;
+       } else if(n == 1) {
+           return nums[0];
+       } else if(n == 2) {
+           return Math.max(nums[0], nums[1]);
+       }
+       //Start from first house till second last
+       int max1 = robRange(nums, 0, n-2);
+       //Start from second house till last
+       int max2 = robRange(nums, 1, n-1);
+
+       return Math.max(max1,max2);
+    }
+    private int robRange(int[] nums, int start, int end) {
+        int currMax = 0;
+        int prevMax = 0;
+        for (int i = start; i <= end;i++) {
+            int temp = currMax;
+            currMax = Math.max(currMax, prevMax + nums[i]);
+            prevMax = temp;//previous max becomes current max for next iteration
+        }
+        return currMax;
+    }
+}

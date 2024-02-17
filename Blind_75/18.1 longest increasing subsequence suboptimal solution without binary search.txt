@@ -1,0 +1,31 @@
+// Let L(i) be the length of the LIS ending at index i such that arr[i] is the last element of the LIS. Then, L(i) can be recursively written as: 
+
+// L(i) = 1 + max(L(j) ) where 0 < j < i and arr[j] < arr[i]; or
+// L(i) = 1, if no such j exists.
+// Formally, the length of LIS ending at index i, is 1 greater than the maximum of lengths of all LIS ending at some index j such that arr[j] < arr[i] where j < i.
+
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+//         Let L(i) be the length of the LIS ending at index i such that arr[i] is the last element of the LIS. Then, L(i) can be recursively written as: 
+
+// L(i) = 1 + max(L(j) ) where 0 < j < i and arr[j] < arr[i]; or
+// L(i) = 1, if no such j exists.
+// Formally, the length of LIS ending at index i, is 1 greater than the maximum of lengths of all LIS ending at some index j such that arr[j] < arr[i] where j < i.
+      int[] dp = new int[nums.length];
+      Arrays.fill(dp,1);//lis 1 for every element individually
+      
+      for(int i = 1; i < nums.length; i++) {
+          for(int j = 0; j < i; j++) {
+              if(nums[i] > nums[j]) { //only if current number can be part of LIS
+                  dp[i] = Math.max(dp[i],dp[j]+1);//storing lis for every element
+              }
+          }
+      }
+      int maxLength = 0;
+      for(int lis:dp){
+          maxLength = Math.max(maxLength,lis);
+      }
+      return maxLength;
+
+    }
+}

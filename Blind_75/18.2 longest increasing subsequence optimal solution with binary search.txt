@@ -1,0 +1,80 @@
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+    //optimal solution using binary Search (nlogn)
+    int[] lis = new int[nums.length];
+    int len = 0;
+
+    for(int num:nums) {
+        //find position to insert
+        int index = Arrays.binarySearch(lis,0,len,num);
+
+        //if index is negative i.e element not present in lis index is actually the negative of the insertion point minus 1.
+        index = index < 0 ? -(index + 1) : index;
+
+        //setting element at index in lis
+        lis[index] = num;
+
+        //incrementing length of lis if placed at last index
+        if(index == len) {
+            len++;
+        }
+
+            System.out.println("Current Element: " + num);
+            System.out.println("Index: " + index);
+            System.out.println("LIS Array: " + Arrays.toString(lis));
+            System.out.println("Length of LIS: " + len);
+            System.out.println("===========================");
+    }
+
+    return len;
+
+}
+}
+
+
+
+input:10, 9, 2, 5, 3, 7, 101, 18
+
+Output:
+
+Current Element: 10
+Index: 0
+LIS Array: [10, 0, 0, 0, 0, 0, 0, 0]
+Length of LIS: 1
+===========================
+Current Element: 9
+Index: 0
+LIS Array: [9, 0, 0, 0, 0, 0, 0, 0]
+Length of LIS: 1
+===========================
+Current Element: 2
+Index: 0
+LIS Array: [2, 0, 0, 0, 0, 0, 0, 0]
+Length of LIS: 1
+===========================
+Current Element: 5
+Index: 1
+LIS Array: [2, 5, 0, 0, 0, 0, 0, 0]
+Length of LIS: 2
+===========================
+Current Element: 3
+Index: 1
+LIS Array: [2, 3, 0, 0, 0, 0, 0, 0]
+Length of LIS: 2
+===========================
+Current Element: 7
+Index: 2
+LIS Array: [2, 3, 7, 0, 0, 0, 0, 0]
+Length of LIS: 3
+===========================
+Current Element: 101
+Index: 3
+LIS Array: [2, 3, 7, 101, 0, 0, 0, 0]
+Length of LIS: 4
+===========================
+Current Element: 18
+Index: 3
+LIS Array: [2, 3, 7, 18, 0, 0, 0, 0]
+Length of LIS: 4
+===========================
+Final Length of LIS: 4

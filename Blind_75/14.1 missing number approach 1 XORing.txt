@@ -1,0 +1,12 @@
+class Solution {
+    public int missingNumber(int[] nums) {
+        int n = nums.length;
+        int missingNumber = n;//intialize with highest possible number
+        for(int i =0; i<n; i++) {
+            //XORing with element and index 
+            //due to XOR property everything cancels out and missingNumber remains
+            missingNumber^= i ^ nums[i];
+        }
+        return missingNumber;
+    }
+}
